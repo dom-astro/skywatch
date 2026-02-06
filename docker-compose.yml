@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  php:
+    build: .
+    container_name: skywatch-php
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+    environment:
+      - PHP_MEMORY_LIMIT=256M
+      - MAX_EXECUTION_TIME=30
+    networks:
+      - skywatch
+
+networks:
+  skywatch:
+    driver: bridge
